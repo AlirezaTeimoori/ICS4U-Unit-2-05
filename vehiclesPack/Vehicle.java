@@ -37,7 +37,7 @@ public class Vehicle {
 
     // }
 
-    protected ArrayList create(Scanner scanner) {
+    protected ArrayList<Vehicle> create(Scanner scanner) {
         //Scanner scanner = new Scanner(System.in);
 
         System.out.println("How many vehicles do you want to create?");
@@ -66,14 +66,14 @@ public class Vehicle {
         
         return list;
     }
-    protected void accelerate(ArrayList list, Scanner scanner) {
+    protected void accelerate(ArrayList<Vehicle> list, Scanner scanner) {
         System.out.println("For which vehicle?");
         int vNumber = scanner.nextInt();
         //list.get(vNumber).speed += list.get(vNumber).speed;
         System.out.println("Speeding up!");
     }
 
-    protected void brake(ArrayList list, Scanner scanner) {
+    protected void brake(ArrayList<Vehicle> list, Scanner scanner) {
         System.out.println("For which vehicle?");
         int vNumber = scanner.nextInt();
         //list.get(vNumber).speed = 0;
@@ -111,7 +111,7 @@ public class Vehicle {
         Scanner scanner = new Scanner(System.in);
         Vehicle v = new Vehicle();
         boolean run = true;
-        ArrayList list = null;
+        ArrayList<Vehicle> list = null;
 
         while (run) {
 
