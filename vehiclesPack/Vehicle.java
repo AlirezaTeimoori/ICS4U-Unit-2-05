@@ -146,9 +146,6 @@ public class Vehicle {
 
         }
         
-        
-        
-
         scanner.close();
     }
 }
