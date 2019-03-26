@@ -23,7 +23,7 @@ public class Vehicle {
     private Integer       licensePlateNumber;
     private String        colour;
     private Integer       numberOfDoors;
-    private Integer       speed;
+    public Integer       speed;
     private Integer       maxSpeed;
 
     // Constructor
@@ -37,17 +37,52 @@ public class Vehicle {
 
     // }
 
-    protected void accelerate() {
-        this.speed += this.speed;
+    protected ArrayList create(Scanner scanner) {
+        //Scanner scanner = new Scanner(System.in);
+
+        System.out.println("How many vehicles do you want to create?");
+        int howMany = scanner.nextInt();
+        ArrayList<Vehicle> list = new ArrayList<Vehicle>();
+
+        for (int counter = 0; counter < howMany; counter ++) {
+
+            System.out.println("\n\n===================================");
+            System.out.println("===\tCreating Vehicle #" + (counter + 1) + "\t===\n");
+            
+            Vehicle vehicle = new Vehicle();
+            vehicle.getInfo();
+
+            list.add(vehicle);
+        }
+
+        for (int count = 0; count < howMany; count ++) {
+
+            System.out.println("\n\n===================================");
+            System.out.println("======\t     Vehicle #" + (count + 1) + "      ======\n");
+            list.get(count).toString();
+            System.out.println("\n===================================");
+
+        }
+        
+        return list;
+    }
+    protected void accelerate(ArrayList list, Scanner scanner) {
+        System.out.println("For which vehicle?");
+        int vNumber = scanner.nextInt();
+        //list.get(vNumber).speed += list.get(vNumber).speed;
+        System.out.println("Speeding up!");
     }
 
-    protected void brake() {
-        this.speed = 0;
+    protected void brake(ArrayList list, Scanner scanner) {
+        System.out.println("For which vehicle?");
+        int vNumber = scanner.nextInt();
+        //list.get(vNumber).speed = 0;
+        System.out.println("Brake!");
+
     }
 
     public void getInfo() {
         
-
         System.out.println("Enter vehicle licence plate number:");
         this.licensePlateNumber = scanner.nextInt();
         System.out.println("Enter vehicle colour:");
@@ -74,43 +109,37 @@ public class Vehicle {
     public static void main(String[] args) {
         
         Scanner scanner = new Scanner(System.in);
+        Vehicle v = new Vehicle();
+        boolean run = true;
+        ArrayList list = null;
 
+        while (run) {
 
-        System.out.println("How many vehicles do you want to create?");
-        int howMany = scanner.nextInt();
-        ArrayList<Vehicle> list = new ArrayList<Vehicle>();
-
-        for (int counter = 0; counter < howMany; counter ++) {
-
-            System.out.println("\n\n===================================");
-            System.out.println("===\tCreating Vehicle #" + (counter + 1) + "\t===\n");
-
-            // System.out.println("Enter vehicle licence plate number:");
-            // int licensePlateNumber = scanner.nextInt();
-            // System.out.println("Enter vehicle colour:");
-            // String colour = scanner.next();
-            // System.out.println("Enter vehicle number of doors: ");
-            // int numberOfDoors = scanner.nextInt();
-            // System.out.println("Enter vehicle speed:");
-            // int speed = scanner.nextInt();
-            // System.out.println("Enter vehicle max speed: ");
-            // int maxSpeed = scanner.nextInt();
-
-            // Vehicle vehicle = new Vehicle(licensePlateNumber, colour, numberOfDoors, speed, maxSpeed);
+            System.out.println("What do you want to do? ( C = Create, A = Accelerate, B = Brake, E = Exit ) ");
+            String response = scanner.nextLine();
+            switch (response) {
+                case "C":
+                    list = v.create(scanner);
+                    break;
             
-            Vehicle vehicle = new Vehicle();
-            vehicle.getInfo();
+                case "A":
+                    v.accelerate(list, scanner);
+                    break;
+                    
+                case "B":
+                    v.brake(list, scanner);
+                    break;
+                case "E":
+                    run = false;
 
-            list.add(vehicle);
+                System.out.println(run);
+            }
+
         }
+        
+        
+        
 
-        for (int count = 0; count < howMany; count ++) {
-
-            System.out.println("\n\n===================================");
-            System.out.println("======\t     Vehicle #" + (count + 1) + "      ======\n");
-            list.get(count).toString();
-            System.out.println("\n===================================");
-
-        }
+        scanner.close();
     }
 }
