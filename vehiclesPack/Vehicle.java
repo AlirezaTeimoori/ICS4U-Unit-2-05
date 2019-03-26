@@ -23,7 +23,7 @@ public class Vehicle {
     private Integer       licensePlateNumber;
     private String        colour;
     private Integer       numberOfDoors;
-    public Integer       speed;
+    private Integer       speed;
     private Integer       maxSpeed;
 
     // Constructor
@@ -69,16 +69,25 @@ public class Vehicle {
     protected void accelerate(ArrayList<Vehicle> list, Scanner scanner) {
         System.out.println("For which vehicle?");
         int vNumber = scanner.nextInt();
-        //list.get(vNumber).speed += list.get(vNumber).speed;
+        list.get(vNumber).speed += 20;
+        list.get(vNumber).speed = list.get(vNumber).speed > list.get(vNumber).maxSpeed ? list.get(vNumber).maxSpeed : list.get(vNumber).speed;
+        //list.get(vNumber).setSpeed(10);
         System.out.println("Speeding up!");
+        System.out.println(list.get(vNumber));
     }
 
     protected void brake(ArrayList<Vehicle> list, Scanner scanner) {
         System.out.println("For which vehicle?");
         int vNumber = scanner.nextInt();
-        //list.get(vNumber).speed = 0;
+        list.get(vNumber).speed = 0;
         System.out.println("Brake!");
+        System.out.println(list.get(vNumber));
 
+    }
+
+    protected void setSpeed(int speedToSet) {
+
+        this.speed = speedToSet;
     }
 
     public void getInfo() {
