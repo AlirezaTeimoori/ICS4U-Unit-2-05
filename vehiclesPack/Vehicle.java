@@ -1,7 +1,7 @@
 
 //---------------------------------------
 //-- Created by:     Alireza Teimoori  --
-//-- Created on:     Mar 19 2019       --
+//-- Created on:     Mar 25 2019       --
 //-- Created for:    Unit 2-05         --
 //-- Course Code:    ICS4U             --
 //-- Teacher Name:   Chris Atkinson    --
@@ -9,9 +9,6 @@
 //-- This program creates a class      --
 //-- vehicle with fields and methods   --
 //---------------------------------------
-
-
-//, Integer speed, Integer maxSpeed
 
 
 import java.util.*;
